@@ -30,9 +30,11 @@ module.exports = function(app) {
 
 			// get and return all the todos after you create another
 			Todo.find(function(err, todos) {
-				if (err)
+				if (err || todos == null) {
 					res.send(err)
-				res.json(todos);
+				} else {
+					res.json(todos);
+				}	
 			});
 		});
 
